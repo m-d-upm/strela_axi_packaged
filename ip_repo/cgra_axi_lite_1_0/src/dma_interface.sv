@@ -37,8 +37,8 @@ module dma_interface #(
     input   logic [INPUT_NODES_NUM-1:0] data_input_ready_i,
 
     input   logic [31:0] data_input_addr_i [INPUT_NODES_NUM-1:0],
-    input   logic [15:0] data_input_size_i [INPUT_NODES_NUM-1:0],
-    input   logic [15:0] data_input_stride_i [INPUT_NODES_NUM-1:0],
+    input   logic [31:0] data_input_size_i [INPUT_NODES_NUM-1:0],
+    input   logic [31:0] data_input_stride_i [INPUT_NODES_NUM-1:0],
 
     // CGRA config signals
     input   logic [31:0] data_config_addr_i,
@@ -52,7 +52,7 @@ module dma_interface #(
     output  logic [OUTPUT_NODES_NUM-1:0] data_output_ready_o,
 
     input   logic [31:0] data_output_addr_i [OUTPUT_NODES_NUM-1:0],
-    input   logic [15:0] data_output_size_i [OUTPUT_NODES_NUM-1:0],
+    input   logic [31:0] data_output_size_i [OUTPUT_NODES_NUM-1:0],
 
     output  logic data_output_done_o,
     input   logic output_arbiter_hold_i,
@@ -90,7 +90,7 @@ module dma_interface #(
     assign axi_master_port.aw_prot = '0;    // Unpriviledged access
     assign axi_master_port.b_ready = 1'b1;  // No error checking on write response
     assign axi_master_port.ar_prot = '0;    // Unpriviledged access
-    // NOTE: AXI prot lines above commented out because the older AXI version of CVA6 in ESP platform does not have this signals defined for AXI Lite
+    // NOTE: AXI prot lines above commented out because the older AXI version of CVA6 in ESP platform does not have these signals defined for AXI Lite
     // if/when it gets updated this can be reverted 
 
     /*********************************************
